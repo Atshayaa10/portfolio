@@ -8,7 +8,19 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
-      - name: Failing test
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      
+      - name: Create Python file with syntax error
         run: |
-          echo "This will fail"
-          exit 1
+          cat > test.py << 'EOF'
+          def hello()
+              print("Missing colon!")
+          
+          hello()
+          EOF
+      
+      - name: Run Python (will fail with syntax error)
+        run: python test.py
