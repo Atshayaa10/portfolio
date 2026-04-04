@@ -33,6 +33,21 @@
             overflow-x: hidden;
         }
 
+        /* ===== BACKGROUND CANVAS ANIMATION ===== */
+        #bgCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        header { position: relative; z-index: 10; }
+        section { position: relative; z-index: 1; }
+        footer { position: relative; z-index: 1; }
+        .hero { position: relative; z-index: 1; }
+
         /* Header & Navigation */
         header {
             position: fixed;
@@ -285,11 +300,10 @@
         }
 
         .about-stats {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-}
-
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
 
         .stat-card {
             background: var(--bg-card);
@@ -555,34 +569,18 @@
 
         /* Animations */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
         @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
         }
 
         /* Dropdown Styles */
@@ -606,9 +604,7 @@
             animation: fadeInUp 0.3s ease;
         }
 
-        .dropdown-content.show {
-            display: block;
-        }
+        .dropdown-content.show { display: block; }
 
         .dropdown-content a {
             color: var(--text-primary);
@@ -619,13 +615,8 @@
             font-weight: 300;
         }
 
-        .dropdown-content a:first-child {
-            border-radius: 8px 8px 0 0;
-        }
-
-        .dropdown-content a:last-child {
-            border-radius: 0 0 8px 8px;
-        }
+        .dropdown-content a:first-child { border-radius: 8px 8px 0 0; }
+        .dropdown-content a:last-child { border-radius: 0 0 8px 8px; }
 
         .dropdown-content a:hover {
             background: rgba(212, 175, 55, 0.1);
@@ -648,107 +639,84 @@
                 border-top: 1px solid rgba(212, 175, 55, 0.2);
             }
 
-            .nav-links.active {
-                left: 0;
-            }
-
-            .menu-toggle {
-                display: flex;
-            }
+            .nav-links.active { left: 0; }
+            .menu-toggle { display: flex; }
 
             .hero-content {
                 grid-template-columns: 1fr;
                 text-align: center;
             }
 
-            .hero-text h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-text h3 {
-                font-size: 1.3rem;
-            }
+            .hero-text h1 { font-size: 2.5rem; }
+            .hero-text h3 { font-size: 1.3rem; }
 
             .profile-img {
                 width: 250px;
                 height: 250px;
             }
 
-            .about-content,
-            .contact-content {
-                grid-template-columns: 1fr;
-            }
+            .about-content, .contact-content { grid-template-columns: 1fr; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .hero-buttons { justify-content: center; }
+            .section-title h2 { font-size: 2rem; }
+            .about-stats { grid-template-columns: 1fr; }
 
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-buttons {
-                justify-content: center;
-            }
-
-            .section-title h2 {
-                font-size: 2rem;
-            }
-
-            .about-stats {
-                grid-template-columns: 1fr;
-            }
             #typing-text::after {
-  content: "|";
-  margin-left: 6px;
-  animation: blink 1s infinite;
-}
+                content: "|";
+                margin-left: 6px;
+                animation: blink 1s infinite;
+            }
 
-@keyframes blink {
-  0%, 50%, 100% { opacity: 1; }
-  25%, 75% { opacity: 0; }
-}
-
-
-/* ============================= */
-/* PROJECT TECH STACK PILLS */
-/* ============================= */
-
-
-
-
-
-
+            @keyframes blink {
+                0%, 50%, 100% { opacity: 1; }
+                25%, 75% { opacity: 0; }
+            }
         }
-        /* ============================= */
-/* PROJECT TECH STACK PILLS */
-/* ============================= */
 
-.project-tech {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  margin: 0.8rem 0 1.2rem;
-}
+        /* Project Tech Stack Pills */
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin: 0.8rem 0 1.2rem;
+        }
 
-.project-tech span {
-  background: rgba(212, 175, 55, 0.15);
-  color: var(--primary-color);
-  padding: 0.4rem 0.9rem;
-  border-radius: 999px;
-  font-size: 0.75rem;
-  font-weight: 500;
-  border: 1px solid rgba(212, 175, 55, 0.35);
-  white-space: nowrap;
-  transition: all 0.3s ease;
-}
+        .project-tech span {
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--primary-color);
+            padding: 0.4rem 0.9rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border: 1px solid rgba(212, 175, 55, 0.35);
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
 
-.project-tech span:hover {
-  background: var(--primary-color);
-  color: var(--bg-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
-}
+        .project-tech span:hover {
+            background: var(--primary-color);
+            color: var(--bg-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+        }
 
+        #typing-text::after {
+            content: "|";
+            margin-left: 6px;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50%, 100% { opacity: 1; }
+            25%, 75% { opacity: 0; }
+        }
     </style>
 </head>
 <body>
+
+    <!-- Background Canvas -->
+    <canvas id="bgCanvas"></canvas>
+
     <!-- Header -->
     <header id="header">
         <nav>
@@ -770,56 +738,39 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-  <div class="hero-content">
-
-    <div class="hero-text">
-      <h2>Hi, I'm</h2>
-      <h1>Atshayaa B</h1>
-      <h3><span id="typing-text"></span></h3>
-
-
-      <p>
-        I am an Integrated M.Sc. Data Science student with experience in machine learning projects,
-        web development, and database-driven applications. I enjoy exploring new
-        technologies and building end-to-end systems as part of my learning journey.
-      </p>
-
-      <div class="hero-buttons">
-        <!-- Resume Dropdown -->
-        <div class="resume-dropdown">
-          <button class="btn btn-primary" id="resumeBtn">
-            View Resume <i class="fas fa-chevron-down"></i>
-          </button>
-
-          <div class="dropdown-content" id="dropdownContent">
-            <a href="resume/data_resume.pdf" target="_blank">Data Resume</a>
-            <a href="resume/software_resume.pdf" target="_blank"> Software Resume</a>
-          </div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h2>Hi, I'm</h2>
+                <h1>Atshayaa B</h1>
+                <h3><span id="typing-text"></span></h3>
+                <p>
+                    I am an Integrated M.Sc. Data Science student with experience in machine learning projects,
+                    web development, and database-driven applications. I enjoy exploring new
+                    technologies and building end-to-end systems as part of my learning journey.
+                </p>
+                <div class="hero-buttons">
+                    <div class="resume-dropdown">
+                        <button class="btn btn-primary" id="resumeBtn">
+                            View Resume <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-content" id="dropdownContent">
+                            <a href="resume/data_resume.pdf" target="_blank">Data Resume</a>
+                            <a href="resume/software_resume.pdf" target="_blank">Software Resume</a>
+                        </div>
+                    </div>
+                    <a href="#contact" class="btn btn-outline">Get in Touch</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="images/profile.jpeg" alt="Atshayaa B" class="profile-img">
+                <div class="social-links">
+                    <a href="https://github.com/Atshayaa10" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/atshayaa-b-06529128a/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:atshayaab004@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
         </div>
-
-        <a href="#contact" class="btn btn-outline">Get in Touch</a>
-      </div>
-    </div>
-
-    <div class="hero-image">
-      <img src="images/profile.jpeg" alt="Atshayaa B" class="profile-img">
-
-      <div class="social-links">
-        <a href="https://github.com/Atshayaa10" target="_blank">
-          <i class="fab fa-github"></i>
-        </a>
-        <a href="https://www.linkedin.com/in/atshayaa-b-06529128a/" target="_blank">
-          <i class="fab fa-linkedin"></i>
-        </a>
-        <a href="mailto:atshayaab004@gmail.com">
-          <i class="fas fa-envelope"></i>
-        </a>
-      </div>
-    </div>
-
-  </div>
-</section>
-
+    </section>
 
     <!-- About Section -->
     <section id="about">
@@ -830,7 +781,7 @@
         <div class="about-content">
             <div class="about-text">
                 <h3>Building Meaningful Digital Experiences</h3>
-                <p>I am a passionate Data Science student focused on data-driven solutions and software development that solve real-world problems . I create scalable systems that bridge the gap between advanced analytics and practical applications.</p>
+                <p>I am a passionate Data Science student focused on data-driven solutions and software development that solve real-world problems. I create scalable systems that bridge the gap between advanced analytics and practical applications.</p>
                 <p>My work spans from developing AI-powered voice assistants and computer vision systems to building end-to-end web applications with seamless backend integrations. I thrive on transforming complex data into actionable insights and delivering robust software solutions that drive business value.</p>
             </div>
             <div class="about-stats">
@@ -849,191 +800,125 @@
                     <h3>Data Analytics</h3>
                     <p>BI & Visualization</p>
                 </div>
-  <div class="stat-card">
-  <i class="fas fa-database"></i>
-  <h3>Databases</h3>
-  <p>SQL & NoSQL Systems</p>
-</div>
-
-
+                <div class="stat-card">
+                    <i class="fas fa-database"></i>
+                    <h3>Databases</h3>
+                    <p>SQL & NoSQL Systems</p>
+                </div>
             </div>
         </div>
     </section>
 
-<section id="projects">
-  <div class="section-title">
-    <h2>Featured Work</h2>
-    <p>A showcase of my recent projects demonstrating expertise across various domains</p>
-  </div>
-
-  <div class="projects-grid">
-
-    <!-- Elderly Voice Assistant -->
-    <div class="project-card">
-      <div class="project-image"><i class="fas fa-microphone"></i></div>
-      <div class="project-content">
-        <h3>Elderly Voice Assistant</h3>
-        <div class="project-tech">
-          <span>Python</span>
-          <span>Speech Recognition</span>
-          <span>NLP</span>
-          <span>Text-to-Speech</span>
-          <span>APIs</span>
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="section-title">
+            <h2>Featured Work</h2>
+            <p>A showcase of my recent projects demonstrating expertise across various domains</p>
         </div>
-        <a href="https://github.com/Atshayaa10/elderly_voice_assistant" target="_blank" class="project-link">
-          View on GitHub <i class="fas fa-arrow-right"></i>
-        </a>
-      </div>
-    </div>
+        <div class="projects-grid">
 
-    <!-- Driver Fatigue -->
-    <div class="project-card">
-      <div class="project-image"><i class="fas fa-car"></i></div>
-      <div class="project-content">
-        <h3>Driver Fatigue Detection & Alert System</h3>
-        <div class="project-tech">
-          <span>Python</span>
-          <span>OpenCV</span>
-          <span>Computer Vision</span>
-          <span>TensorFlow</span>
-          <span>Deep Learning</span>
+            <div class="project-card">
+                <div class="project-image"><i class="fas fa-microphone"></i></div>
+                <div class="project-content">
+                    <h3>Elderly Voice Assistant</h3>
+                    <div class="project-tech">
+                        <span>Python</span><span>Speech Recognition</span><span>NLP</span><span>Text-to-Speech</span><span>APIs</span>
+                    </div>
+                    <a href="https://github.com/Atshayaa10/elderly_voice_assistant" target="_blank" class="project-link">View on GitHub <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image"><i class="fas fa-car"></i></div>
+                <div class="project-content">
+                    <h3>Driver Fatigue Detection & Alert System</h3>
+                    <div class="project-tech">
+                        <span>Python</span><span>OpenCV</span><span>Computer Vision</span><span>TensorFlow</span><span>Deep Learning</span>
+                    </div>
+                    <a href="https://github.com/Atshayaa10/driver_fatigue_alert_system" target="_blank" class="project-link">View on GitHub <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image"><i class="fas fa-file-invoice"></i></div>
+                <div class="project-content">
+                    <h3>Smart Invoice Processor with SAP API Integration</h3>
+                    <div class="project-tech">
+                        <span>Python</span><span>KMeans</span><span>SAP API</span><span>Isolation Forest</span>
+                    </div>
+                    <a href="https://github.com/Atshayaa10/smart_invoice_project" target="_blank" class="project-link">View on GitHub <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image"><i class="fas fa-robot"></i></div>
+                <div class="project-content">
+                    <h3>AI-Powered CI/CD Self-Healing Agent</h3>
+                    <div class="project-tech">
+                        <span>Python</span><span>LangGraph</span><span>LangChain</span><span>FastAPI</span><span>Groq LLM</span><span>GitHub API</span>
+                    </div>
+                    <a href="https://github.com/Atshayaa10/CI-CD-SELF-HEALING-AGENT" target="_blank" class="project-link">View on GitHub <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image"><i class="fas fa-paw"></i></div>
+                <div class="project-content">
+                    <h3>PetWise Recommendation System</h3>
+                    <div class="project-tech">
+                        <span>Python</span><span>Flask</span><span>Recommendation System</span><span>MongoDB</span>
+                    </div>
+                    <a href="https://github.com/Atshayaa10/flaskproject" target="_blank" class="project-link">View on GitHub <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image"><i class="fas fa-desktop"></i></div>
+                <div class="project-content">
+                    <h3>Remote Desktop Viewer</h3>
+                    <div class="project-tech">
+                        <span>Java</span><span>Sockets</span><span>Networking</span><span>Multithreading</span><span>GUI</span>
+                    </div>
+                    <a href="https://github.com/Atshayaa10/remote_desktop_viewer" target="_blank" class="project-link">View on GitHub <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image"><i class="fas fa-credit-card"></i></div>
+                <div class="project-content">
+                    <h3>Voice-Based Expense Logger</h3>
+                    <div class="project-tech">
+                        <span>Python</span><span>Speech-to-Text</span><span>NLP</span><span>Expense Tracking</span><span>APIs</span>
+                    </div>
+                    <a href="https://github.com/Atshayaa10/voice_based_expense_logger" target="_blank" class="project-link">View on GitHub <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image"><i class="fas fa-chart-line"></i></div>
+                <div class="project-content">
+                    <h3>Telangana Growth Analysis Dashboard</h3>
+                    <div class="project-tech">
+                        <span>Power BI</span><span>DAX</span><span>Power Query</span><span>Data Visualization</span><span>ETL</span>
+                    </div>
+                    <a href="https://github.com/Atshayaa10/Telangana-Growth-Analysis-Policy-Insights-Dashboard" target="_blank" class="project-link">View on GitHub <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image"><i class="fas fa-shopping-cart"></i></div>
+                <div class="project-content">
+                    <h3>Competitive Intelligent Agent</h3>
+                    <div class="project-tech">
+                        <span>Python</span><span>LangGraph</span><span>LangChain</span><span>Groq LLaMA-3</span><span>Google Gemini</span><span>Web Scraping APIs</span>
+                    </div>
+                    <a href="https://github.com/Atshayaa10/competitive-intelligent-agent.git" target="_blank" class="project-link">View on GitHub <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
         </div>
-        <a href="https://github.com/Atshayaa10/driver_fatigue_alert_system" target="_blank" class="project-link">
-          View on GitHub <i class="fas fa-arrow-right"></i>
-        </a>
-      </div>
-    </div>
+    </section>
 
-    <!-- Invoice -->
-    <div class="project-card">
-      <div class="project-image"><i class="fas fa-file-invoice"></i></div>
-      <div class="project-content">
-        <h3>Smart Invoice Processor with SAP API Integration</h3>
-        <div class="project-tech">
-          <span>Python</span>
-          <span>KMeans</span>
-          <span>SAP API</span>
-          <span>Isolation Forest</span>
-        </div>
-        <a href="https://github.com/Atshayaa10/smart_invoice_project" target="_blank" class="project-link">
-          View on GitHub <i class="fas fa-arrow-right"></i>
-        </a>
-      </div>
-    </div>
-
-    <!-- CI/CD Self-Healing Agent (KEPT) -->
-    <div class="project-card">
-      <div class="project-image"><i class="fas fa-robot"></i></div>
-      <div class="project-content">
-        <h3>AI-Powered CI/CD Self-Healing Agent</h3>
-        <div class="project-tech">
-          <span>Python</span>
-          <span>LangGraph</span>
-          <span>LangChain</span>
-          <span>FastAPI</span>
-          <span>Groq LLM</span>
-          <span>GitHub API</span>
-        </div>
-        <a href="https://github.com/Atshayaa10/CI-CD-SELF-HEALING-AGENT" target="_blank" class="project-link">
-          View on GitHub <i class="fas fa-arrow-right"></i>
-        </a>
-      </div>
-    </div>
-
-    <!-- PetWise -->
-    <div class="project-card">
-      <div class="project-image"><i class="fas fa-paw"></i></div>
-      <div class="project-content">
-        <h3>PetWise Recommendation System</h3>
-        <div class="project-tech">
-          <span>Python</span>
-          <span>Flask</span>
-          <span>Recommendation System</span>
-          <span>MongoDB</span>
-        </div>
-        <a href="https://github.com/Atshayaa10/flaskproject" target="_blank" class="project-link">
-          View on GitHub <i class="fas fa-arrow-right"></i>
-        </a>
-      </div>
-    </div>
-
-    <!-- Remote Desktop -->
-    <div class="project-card">
-      <div class="project-image"><i class="fas fa-desktop"></i></div>
-      <div class="project-content">
-        <h3>Remote Desktop Viewer</h3>
-        <div class="project-tech">
-          <span>Java</span>
-          <span>Sockets</span>
-          <span>Networking</span>
-          <span>Multithreading</span>
-          <span>GUI</span>
-        </div>
-        <a href="https://github.com/Atshayaa10/remote_desktop_viewer" target="_blank" class="project-link">
-          View on GitHub <i class="fas fa-arrow-right"></i>
-        </a>
-      </div>
-    </div>
-
-    <!-- Expense Logger -->
-    <div class="project-card">
-      <div class="project-image"><i class="fas fa-credit-card"></i></div>
-      <div class="project-content">
-        <h3>Voice-Based Expense Logger</h3>
-        <div class="project-tech">
-          <span>Python</span>
-          <span>Speech-to-Text</span>
-          <span>NLP</span>
-          <span>Expense Tracking</span>
-          <span>APIs</span>
-        </div>
-        <a href="https://github.com/Atshayaa10/voice_based_expense_logger" target="_blank" class="project-link">
-          View on GitHub <i class="fas fa-arrow-right"></i>
-        </a>
-      </div>
-    </div>
-
-    <!-- Dashboard -->
-    <div class="project-card">
-      <div class="project-image"><i class="fas fa-chart-line"></i></div>
-      <div class="project-content">
-        <h3>Telangana Growth Analysis Dashboard</h3>
-        <div class="project-tech">
-          <span>Power BI</span>
-          <span>DAX</span>
-          <span>Power Query</span>
-          <span>Data Visualization</span>
-          <span>ETL</span>
-        </div>
-        <a href="https://github.com/Atshayaa10/Telangana-Growth-Analysis-Policy-Insights-Dashboard" target="_blank" class="project-link">
-          View on GitHub <i class="fas fa-arrow-right"></i>
-        </a>
-      </div>
-    </div>
-
-    <!-- ✅ NEW PROJECT (ADDED LAST as requested) -->
-    <div class="project-card">
-      <div class="project-image"><i class="fas fa-shopping-cart"></i></div>
-      <div class="project-content">
-        <h3>Competitive Intelligent Agent</h3>
-
-        <div class="project-tech">
-          <span>Python</span>
-          <span>LangGraph</span>
-          <span>LangChain</span>
-          <span>Groq LLaMA-3</span>
-          <span>Google Gemini</span>
-          <span>Web Scraping APIs</span>
-        </div>
-
-        <a href="https://github.com/Atshayaa10/competitive-intelligent-agent.git" target="_blank" class="project-link">
-          View on GitHub <i class="fas fa-arrow-right"></i>
-        </a>
-      </div>
-    </div>
-
-  </div>
-</section>
     <!-- Skills Section -->
     <section id="skills">
         <div class="section-title">
@@ -1066,15 +951,14 @@
                 </ul>
             </div>
             <div class="skill-category">
-    <h3><i class="fas fa-brain"></i> LLM & AI Frameworks</h3>
-    <ul>
-        <li>Large Language Models (LLMs)</li>
-        <li>LangChain</li>
-        <li>LangGraph</li>
-        <li>Retrieval-Augmented Generation (RAG)</li>
-        
-    </ul>
-</div>
+                <h3><i class="fas fa-brain"></i> LLM & AI Frameworks</h3>
+                <ul>
+                    <li>Large Language Models (LLMs)</li>
+                    <li>LangChain</li>
+                    <li>LangGraph</li>
+                    <li>Retrieval-Augmented Generation (RAG)</li>
+                </ul>
+            </div>
             <div class="skill-category">
                 <h3><i class="fas fa-tools"></i> Tools</h3>
                 <ul>
@@ -1091,8 +975,8 @@
     <section id="contact">
         <div class="section-title">
             <h2>Get in Touch</h2>
-            <p>I’m actively seeking internship opportunities and open to collaborations and exciting projects.
-Let’s connect if you’re interested in working together or exchanging ideas.</p>
+            <p>I'm actively seeking internship opportunities and open to collaborations and exciting projects.
+Let's connect if you're interested in working together or exchanging ideas.</p>
         </div>
         <div class="contact-content">
             <div class="contact-info">
@@ -1119,134 +1003,242 @@ Let’s connect if you’re interested in working together or exchanging ideas.<
                 </div>
             </div>
             <div class="contact-form">
-  <form
-    action="https://formspree.io/f/xdannlle"
-    method="POST"
-    id="contactForm"
-  >
-
-    <div class="form-group">
-      <label for="name">Name</label>
-      <input type="text" id="name" name="name" required>
-    </div>
-
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" required>
-    </div>
-
-    <div class="form-group">
-      <label for="message">Message</label>
-      <textarea id="message" name="message" required></textarea>
-    </div>
-
-    <!-- Optional subject -->
-    <input type="hidden" name="_subject" value="New message from portfolio">
-
-    <button type="submit" class="btn btn-primary">
-      Send Message
-    </button>
-
-    <!-- Status message -->
-    <p id="formStatus" style="margin-top:12px;"></p>
-
-  </form>
-</div>
-
+                <form action="https://formspree.io/f/xdannlle" method="POST" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <input type="hidden" name="_subject" value="New message from portfolio">
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                    <p id="formStatus" style="margin-top:12px;"></p>
+                </form>
             </div>
         </div>
     </section>
+
     <!-- Footer -->
-    
+    <footer>
+        <p>&copy; 2025 Atshayaa B. All rights reserved.</p>
+    </footer>
+
     <script>
         // Mobile Menu Toggle
         const menuToggle = document.getElementById('menuToggle');
         const navLinks = document.getElementById('navLinks');
-
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
+        menuToggle.addEventListener('click', () => { navLinks.classList.toggle('active'); });
 
         // Resume Dropdown
         const resumeBtn = document.getElementById('resumeBtn');
         const dropdownContent = document.getElementById('dropdownContent');
-
-        resumeBtn.addEventListener('click', () => {
-            dropdownContent.classList.toggle('show');
-        });
-
-        // Close dropdown when clicking outside
+        resumeBtn.addEventListener('click', () => { dropdownContent.classList.toggle('show'); });
         window.addEventListener('click', (e) => {
             if (!resumeBtn.contains(e.target) && !dropdownContent.contains(e.target)) {
                 dropdownContent.classList.remove('show');
             }
         });
-        const texts = [
-    "Data Science Student",
-    "Software Development Enthusiast"
-  ];
 
-  let textIndex = 0;
-  let charIndex = 0;
-  let isDeleting = false;
-  const typingSpeed = 100;
-  const deletingSpeed = 60;
-  const pauseAfterTyping = 1500;
+        // Typing Effect
+        const texts = ["Data Science Student", "Software Development Enthusiast"];
+        let textIndex = 0, charIndex = 0, isDeleting = false;
+        const typingSpeed = 100, deletingSpeed = 60, pauseAfterTyping = 1500;
+        function typeEffect() {
+            const currentText = texts[textIndex];
+            const typingElement = document.getElementById("typing-text");
+            if (!isDeleting) {
+                typingElement.textContent = currentText.slice(0, charIndex + 1);
+                charIndex++;
+                if (charIndex === currentText.length) setTimeout(() => (isDeleting = true), pauseAfterTyping);
+            } else {
+                typingElement.textContent = currentText.slice(0, charIndex - 1);
+                charIndex--;
+                if (charIndex === 0) { isDeleting = false; textIndex = (textIndex + 1) % texts.length; }
+            }
+            setTimeout(typeEffect, isDeleting ? deletingSpeed : typingSpeed);
+        }
+        typeEffect();
 
-  function typeEffect() {
-    const currentText = texts[textIndex];
-    const typingElement = document.getElementById("typing-text");
-
-    if (!isDeleting) {
-      typingElement.textContent = currentText.slice(0, charIndex + 1);
-      charIndex++;
-
-      if (charIndex === currentText.length) {
-        setTimeout(() => (isDeleting = true), pauseAfterTyping);
-      }
-    } else {
-      typingElement.textContent = currentText.slice(0, charIndex - 1);
-      charIndex--;
-
-      if (charIndex === 0) {
-        isDeleting = false;
-        textIndex = (textIndex + 1) % texts.length;
-      }
-    }
-
-    setTimeout(typeEffect, isDeleting ? deletingSpeed : typingSpeed);
-  }
-
-  typeEffect();
-  
-  const form = document.getElementById("contactForm");
-  const statusEl = document.getElementById("formStatus");
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    statusEl.textContent = "Sending...";
-
-    const data = new FormData(form);
-
-    try {
-      const res = await fetch(form.action, {
-        method: "POST",
-        body: data,
-        headers: { "Accept": "application/json" }
-      });
-
-      if (res.ok) {
-        statusEl.textContent = "✅ Message sent successfully!";
-        form.reset();
-      } else {
-        statusEl.textContent = "❌ Oops! Something went wrong. Try again.";
-      }
-    } catch (err) {
-      statusEl.textContent = "❌ Network error. Please try again.";
-    }
-  });
-
-
+        // Contact Form
+        const form = document.getElementById("contactForm");
+        const statusEl = document.getElementById("formStatus");
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            statusEl.textContent = "Sending...";
+            const data = new FormData(form);
+            try {
+                const res = await fetch(form.action, { method: "POST", body: data, headers: { "Accept": "application/json" } });
+                if (res.ok) { statusEl.textContent = "✅ Message sent successfully!"; form.reset(); }
+                else statusEl.textContent = "❌ Oops! Something went wrong. Try again.";
+            } catch (err) { statusEl.textContent = "❌ Network error. Please try again."; }
+        });
     </script>
+
+    <!-- ============================================
+         CURSOR-REACTIVE BACKGROUND ANIMATION
+    ============================================ -->
+    <script>
+    (function() {
+        const canvas = document.getElementById('bgCanvas');
+        const ctx = canvas.getContext('2d');
+        let W, H;
+        const mouse = { x: -2000, y: -2000 };
+
+        function resize() {
+            W = canvas.width = window.innerWidth;
+            H = canvas.height = window.innerHeight;
+        }
+        resize();
+        window.addEventListener('resize', resize);
+        document.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+
+        // Glowing ambient orbs
+        const orbs = Array.from({ length: 5 }, () => ({
+            x: Math.random() * innerWidth,
+            y: Math.random() * innerHeight,
+            r: Math.random() * 220 + 80,
+            vx: (Math.random() - 0.5) * 0.18,
+            vy: (Math.random() - 0.5) * 0.18,
+            alpha: Math.random() * 0.045 + 0.012
+        }));
+
+        // Flowing strand lines
+        const lines = Array.from({ length: 24 }, () => ({
+            x: Math.random() * innerWidth,
+            y: Math.random() * innerHeight,
+            length: Math.random() * 230 + 60,
+            angle: Math.random() * Math.PI * 2,
+            speed: Math.random() * 0.35 + 0.08,
+            alpha: Math.random() * 0.09 + 0.025,
+            width: Math.random() * 1.4 + 0.4,
+            curve: (Math.random() - 0.5) * 0.007
+        }));
+
+        // Floating particles
+        const N = 130;
+        const particles = Array.from({ length: N }, () => ({
+            x: Math.random() * innerWidth,
+            y: Math.random() * innerHeight,
+            vx: 0, vy: 0,
+            r: Math.random() * 1.8 + 0.3,
+            alpha: Math.random() * 0.55 + 0.12,
+            speed: Math.random() * 0.35 + 0.08,
+            angle: Math.random() * Math.PI * 2,
+            angleSpeed: (Math.random() - 0.5) * 0.006
+        }));
+
+        // Cursor pulse rings
+        const rings = [];
+        let lastRingTime = 0;
+        document.addEventListener('mousemove', () => {
+            const now = Date.now();
+            if (now - lastRingTime > 120) {
+                rings.push({ x: mouse.x, y: mouse.y, r: 0, maxR: 70 + Math.random() * 50, alpha: 0.22 });
+                lastRingTime = now;
+            }
+        });
+
+        function draw() {
+            ctx.clearRect(0, 0, W, H);
+
+            // Ambient glowing orbs
+            orbs.forEach(o => {
+                o.x += o.vx; o.y += o.vy;
+                if (o.x < -o.r) o.x = W + o.r; if (o.x > W + o.r) o.x = -o.r;
+                if (o.y < -o.r) o.y = H + o.r; if (o.y > H + o.r) o.y = -o.r;
+                const dx = o.x - mouse.x, dy = o.y - mouse.y, dist = Math.hypot(dx, dy);
+                if (dist < 500 && dist > 1) {
+                    const f = (500 - dist) / 500 * 0.35;
+                    o.vx += (dx / dist) * f * 0.014;
+                    o.vy += (dy / dist) * f * 0.014;
+                }
+                o.vx *= 0.993; o.vy *= 0.993;
+                const g = ctx.createRadialGradient(o.x, o.y, 0, o.x, o.y, o.r);
+                g.addColorStop(0, `rgba(212,175,55,${o.alpha * 2.2})`);
+                g.addColorStop(0.5, `rgba(212,175,55,${o.alpha})`);
+                g.addColorStop(1, 'rgba(212,175,55,0)');
+                ctx.beginPath(); ctx.arc(o.x, o.y, o.r, 0, Math.PI * 2);
+                ctx.fillStyle = g; ctx.fill();
+            });
+
+            // Cursor glow halo
+            const mg = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 170);
+            mg.addColorStop(0, 'rgba(212,175,55,0.07)');
+            mg.addColorStop(0.6, 'rgba(212,175,55,0.02)');
+            mg.addColorStop(1, 'rgba(212,175,55,0)');
+            ctx.beginPath(); ctx.arc(mouse.x, mouse.y, 170, 0, Math.PI * 2);
+            ctx.fillStyle = mg; ctx.fill();
+
+            // Cursor pulse rings
+            for (let i = rings.length - 1; i >= 0; i--) {
+                const ring = rings[i];
+                ring.r += 1.4; ring.alpha -= 0.0035;
+                if (ring.alpha <= 0 || ring.r > ring.maxR) { rings.splice(i, 1); continue; }
+                ctx.beginPath(); ctx.arc(ring.x, ring.y, ring.r, 0, Math.PI * 2);
+                ctx.strokeStyle = `rgba(212,175,55,${ring.alpha})`; ctx.lineWidth = 1; ctx.stroke();
+            }
+
+            // Flowing strands (mouse bends their path)
+            lines.forEach(l => {
+                l.angle += l.curve;
+                l.x += Math.cos(l.angle) * l.speed; l.y += Math.sin(l.angle) * l.speed;
+                if (l.x < 0) l.x = W; if (l.x > W) l.x = 0;
+                if (l.y < 0) l.y = H; if (l.y > H) l.y = 0;
+                const dx = mouse.x - l.x, dy = mouse.y - l.y, dist = Math.hypot(dx, dy);
+                if (dist < 280 && dist > 1) l.angle += Math.atan2(dy, dx) * 0.004 * (280 - dist) / 280;
+                ctx.save(); ctx.translate(l.x, l.y); ctx.rotate(l.angle);
+                const lg = ctx.createLinearGradient(-l.length / 2, 0, l.length / 2, 0);
+                lg.addColorStop(0, 'rgba(212,175,55,0)');
+                lg.addColorStop(0.5, `rgba(212,175,55,${l.alpha})`);
+                lg.addColorStop(1, 'rgba(212,175,55,0)');
+                ctx.beginPath(); ctx.moveTo(-l.length / 2, 0); ctx.lineTo(l.length / 2, 0);
+                ctx.strokeStyle = lg; ctx.lineWidth = l.width; ctx.stroke(); ctx.restore();
+            });
+
+            // Floating particles (scatter from cursor)
+            particles.forEach(p => {
+                p.angle += p.angleSpeed;
+                p.x += Math.cos(p.angle) * p.speed + p.vx;
+                p.y += Math.sin(p.angle) * p.speed + p.vy;
+                if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+                if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+                const dx = p.x - mouse.x, dy = p.y - mouse.y, dist = Math.hypot(dx, dy);
+                if (dist < 190 && dist > 1) {
+                    const f = (190 - dist) / 190 * 1.8;
+                    p.vx += (dx / dist) * f * 0.1; p.vy += (dy / dist) * f * 0.1;
+                }
+                p.vx *= 0.94; p.vy *= 0.94;
+                ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(212,175,55,${p.alpha})`; ctx.fill();
+            });
+
+            // Web: connect nearby particles with thin lines
+            for (let i = 0; i < N; i++) {
+                for (let j = i + 1; j < N; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const d = Math.hypot(dx, dy);
+                    if (d < 88) {
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `rgba(212,175,55,${0.11 * (1 - d / 88)})`;
+                        ctx.lineWidth = 0.5; ctx.stroke();
+                    }
+                }
+            }
+
+            requestAnimationFrame(draw);
+        }
+        draw();
+    })();
+    </script>
+
 </body>
 </html>
